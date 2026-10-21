@@ -1,0 +1,243 @@
+/* Configuración general de la página */
+
+:root {
+    --header-height: 76px;
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.22);
+    --ink: #0f172a;
+    --surface: rgba(255, 255, 255, 0.93);
+    --surface-strong: #ffffff;
+    --primary: #0f766e;
+    --primary-dark: #115e59;
+    --accent: #f59e0b;
+    --accent-soft: #fef3c7;
+    --text: #e2e8f0;
+    --muted: #cbd5e1;
+    --success: #16a34a;
+    --danger: #dc2626;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    min-width: 320px;
+    overflow: hidden;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    background: #031a1a;
+    color: var(--text);
+}
+
+body {
+    display: grid;
+    grid-template-rows: var(--header-height) 1fr;
+}
+
+/* Encabezado */
+
+.app-header {
+    position: relative;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: var(--header-height);
+    padding: 0.7rem 1.4rem;
+    background: linear-gradient(135deg, #052e2b, #0f766e 58%, #115e59);
+    box-shadow: 0 6px 25px rgba(3, 41, 38, 0.35);
+    box-sizing: border-box;
+}
+
+.app-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-width: 0;
+}
+
+.app-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 1.45rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.app-title-group h1 {
+    margin: 0;
+    font-size: clamp(1rem, 2.6vw, 1.45rem);
+    line-height: 1.2;
+}
+
+.app-title-group p {
+    margin: 0.2rem 0 0;
+    color: var(--muted);
+    font-size: clamp(0.7rem, 1.7vw, 0.85rem);
+}
+
+.app-help {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.35rem 0.75rem;
+    color: #ebfdfb;
+    font-size: 0.74rem;
+    text-align: right;
+}
+
+.app-help span {
+    white-space: nowrap;
+    opacity: 0.9;
+}
+
+/* Contenedor del mapa */
+
+#map {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background: #dfeae8;
+}
+
+#map .leaflet-container {
+    width: 100%;
+    height: 100%;
+    font: inherit;
+    background: #dfeae8;
+}
+
+/* Controles de Leaflet */
+
+.leaflet-control-zoom,
+.leaflet-control-layers,
+.leaflet-bar,
+.leaflet-control-attribution,
+.leaflet-control-scale {
+    border: 0 !important;
+    border-radius: 10px !important;
+    box-shadow: var(--shadow) !important;
+}
+
+.leaflet-control-zoom a,
+.leaflet-control-layers-toggle {
+    color: var(--ink) !important;
+    font-weight: 700;
+}
+
+.leaflet-control-layers {
+    max-width: min(90vw, 360px);
+    background: var(--surface) !important;
+}
+
+.leaflet-control-layers .leaflet-control-layers-list {
+    margin-top: 0.35rem;
+    color: var(--ink);
+}
+
+.leaflet-control-attribution {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Herramientas de dibujo */
+
+.leaflet-draw-toolbar {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.leaflet-draw-toolbar a {
+    background-color: var(--surface-strong) !important;
+    color: var(--ink) !important;
+}
+
+.leaflet-draw-toolbar a:hover {
+    background-color: #e2f2f1 !important;
+}
+
+.leaflet-draw-actions {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.leaflet-draw-actions a {
+    background: var(--primary-dark) !important;
+    color: #fff !important;
+}
+
+.leaflet-draw-actions a:hover {
+    background: var(--primary) !important;
+}
+
+.leaflet-marker-icon.leaflet-div-icon {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #0f766e;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.35);
+}
+
+.leaflet-interactive {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Control de coordenadas */
+
+.coordenadas-control {
+    padding: 0.5rem 0.75rem;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    font-size: 11px;
+    font-family: Consolas, "Courier New", monospace;
+    box-shadow: var(--shadow);
+    line-height: 1.35;
+}
+
+/* Mensaje de estado */
+
+.status-control {
+    padding: 0.6rem 0.75rem;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.97);
+    border-left: 4px solid var(--primary);
+    border-radius: 8px;
+    font-size: 12px;
+    box-shadow: var(--shadow);
+    max-width: 280px;
+}
+
+/* Adaptación a pantallas pequeñas */
+
+@media (max-width: 640px) {
+    :root {
+        --header-height: 88px;
+    }
+
+    .app-header {
+        align-items: flex-start;
+        padding: 0.55rem 0.75rem;
+    }
+
+    .app-help {
+        display: none;
+    }
+
+    .leaflet-control-layers,
+    .leaflet-draw-toolbar,
+    .leaflet-control-zoom {
+        border-radius: 10px !important;
+    }
+
+    .leaflet-control-attribution {
+        max-width: calc(100vw - 1rem);
+        font-size: 10px;
+    }
+}
